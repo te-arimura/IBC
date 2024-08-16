@@ -1,6 +1,6 @@
 // This file is part of IBC.
 // Copyright (C) 2004 Steven M. Kearns (skearns23@yahoo.com )
-// Copyright (C) 2004 - 2021 Richard L King (rlking@aultan.com)
+// Copyright (C) 2004 - 2024 Richard L King (rlking@aultan.com)
 // For conditions of distribution and use, see copyright notice in COPYING.txt
 
 // IBC is free software: you can redistribute it and/or modify
@@ -18,12 +18,12 @@
 
 package ibcalpha.ibc;
 
-import java.awt.Frame;
+import static ibcalpha.ibc.SwingUtils.getWindowTitle;
 import java.awt.Window;
 import java.awt.event.WindowEvent;
 import javax.swing.JDialog;
 
-public class LoginErrorDialogHandler implements WindowHandler {
+public class ReconnectDataOrAccountConfirmationDialogHandler implements WindowHandler {
 
     @Override
     public boolean filterEvent(Window window, int eventId) {
@@ -37,13 +37,8 @@ public class LoginErrorDialogHandler implements WindowHandler {
 
     @Override
     public void handleWindow(Window window, int eventID) {
-        Utils.logToConsole("Login error message:" + SwingUtils.NEWLINE + SwingUtils.getTexts(window));
-        Utils.logToConsole("Cold restart in progress");
-        // stop tidily and do a cold restart
-        MyCachedThreadPool.getInstance().execute(new StopTask(null, true, "Cold restart after Login Error dialog encountered"));
-
         if (! SwingUtils.clickButton(window, "OK")) {
-            Utils.logError("could not dismiss Login Error dialog because we could not find the OK button");
+            Utils.logError("could not dismiss " + getWindowTitle(window) + " because we could not find the OK button");
         }
     }
 
@@ -51,7 +46,12 @@ public class LoginErrorDialogHandler implements WindowHandler {
     public boolean recogniseWindow(Window window) {
         if (! (window instanceof JDialog)) return false;
 
-        return (SwingUtils.titleContains(window, "Login Error"));
+        return ((SwingUtils.titleContains(window, "IBKR Trader Workstation") 
+                ||
+                SwingUtils.titleContains(window, "IBKR Gateway"))
+                && 
+                (SwingUtils.findLabel(window, "Are you sure you want to execute \"simulate") != null)
+                );
     }
     
 }
