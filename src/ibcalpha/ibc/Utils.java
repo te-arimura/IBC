@@ -39,8 +39,6 @@ class Utils {
     private static final PrintStream out = System.out;
     private static final PrintStream err = System.err;
 
-    private static boolean sendConsoleOutputToTwsLog = false;
-
     /**
      * Performs a click on the menu item at the specified path, waiting if necessary for the
      * menu item to become enabled.
@@ -120,7 +118,11 @@ class Utils {
     static void logException(Throwable t) {
         getErrStream().println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         getErrStream().println(formatMessage("An exception has occurred:"));
-        t.printStackTrace(getErrStream());
+        if (Settings.settings().getBoolean("IncludeStackTraceForExceptions", false)) {
+            t.printStackTrace(getErrStream());
+        } else {
+             getErrStream().println(t.getMessage() + "");
+        }
         getErrStream().println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
@@ -143,19 +145,11 @@ class Utils {
     }
 
     static PrintStream getErrStream() {
-        if (sendConsoleOutputToTwsLog) {
-            return System.err;
-        } else {
-            return err;
-        }
+        return err;
     }
 
     static PrintStream getOutStream() {
-        if (sendConsoleOutputToTwsLog) {
-            return System.out;
-        } else {
-            return out;
-        }
+        return out;
     }
 
     static String formatDate(LocalDateTime date) {
@@ -226,10 +220,6 @@ class Utils {
             });
     }
 
-    static void sendConsoleOutputToTwsLog(boolean value) {
-        sendConsoleOutputToTwsLog = value;
-    }
-    
     static String stringToHex(String value) {
         char[] chars = value.toCharArray();
         StringBuilder sb = new StringBuilder();
