@@ -1,5 +1,5 @@
 ' allow time for telnet session to start and connect
-WScript.sleep 200 
+WScript.sleep 1000 
 
 set OBJECT=WScript.CreateObject("WScript.Shell")
 

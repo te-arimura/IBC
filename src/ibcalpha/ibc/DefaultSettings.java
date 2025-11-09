@@ -69,13 +69,16 @@ public class DefaultSettings extends Settings {
     }
     
     private String getSettingSanitisedValue(String key) {
+        String value = props.getProperty(key);
         if (key.equalsIgnoreCase("FIXLoginId") ||
                 key.equalsIgnoreCase("FIXPassword") ||
                 key.equalsIgnoreCase("IbLoginId") ||
                 key.equalsIgnoreCase("IbPassword")) {
-            return "***";
+            if (!value.isEmpty()) {
+                return "***";
+            }
         }
-        return props.getProperty(key.toString());
+        return value;
     }
 
     static String generateDefaultIniPath() {
@@ -151,7 +154,7 @@ public class DefaultSettings extends Settings {
         if (value.isEmpty()) {
             value = defaultValue;
         }
-        return value;
+        return value.trim();
     }
 
     /**

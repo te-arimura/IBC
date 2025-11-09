@@ -112,7 +112,7 @@ set HIDE=
 ::   TWS_PATH
 ::
 ::     The folder where TWS is installed. The TWS installer always installs to 
-::     C:\Jts. Note that even if you have installed from a TWS download
+::     C:\Jts. Note that even if you have installed from a Gateway download
 ::     rather than a TWS download, you should still use this default setting.
 ::     It is possible to move the TWS installation to a different folder, but
 ::     there are virtually no good reasons for doing so.

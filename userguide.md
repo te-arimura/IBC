@@ -208,8 +208,11 @@ version of Trader Workstation from the
 The location of the TWS downloads page on IBKR's website varies from time to
 time, and from country to country.  At the time of writing, on IBKR's US website
 (linked above) you need to click the `Trading` menu near the top of the page,
-then select `Platforms`, and then click `Download Software` under the Trader
-Workstation panel. Currently a valid direct link is
+then select `Platforms`, and then click `Download TWS` in the 'Trader
+Workstation (TWS)' panel. You will then be offered a choice of several different
+TWS downloads.
+
+Currently a valid direct link to the downloads page is
 [TWS Software](https://www.interactivebrokers.com/en/index.php?f=14099#tws-software).
 
 IBKR provides two modes of operation for TWS:
@@ -230,9 +233,9 @@ the same code as the TWS downloads, but they install in a different
 place. You can install one of these, as well as or instead of the TWS installer.
 You can find these via the LOGIN dropdown in the title bar of IBKR's website.
 
-When you run the script to load TWS, it will use the TWS installation if there
+When you run the IBC script to load TWS, it will use the TWS installation if there
 is one, and if not it will use the Gateway installation if there is one.
-Similarly when you run the script to load the Gateway, it will use the Gateway
+Similarly when you run the IBC script to load the Gateway, it will use the Gateway
 installation if there is one, and if not it will use the TWS installation if
 there is one. (Needless to say, if neither a TWS download nor a Gateway
 download has been installed, the scripts will fail!)
@@ -284,11 +287,18 @@ they are freely available from the
 
 ### Installing IBC
 
+Before you install, note that if you're running on Windows, you'll need to
+unblock the zip file to avoid annoying messages when you later try to run
+the .BAT script files. To do this, right click on the .zip file in Flle
+Explorer, select 'Properties' from the context menu, set the 'Unblock'
+check box on the 'General' tab, and click 'OK'.
+
 Installing IBC is just a matter of extracting the contents of the
-downloaded ZIP file to wherever you want to install it. You will make things
-easiest for yourself if you use the locations described in 'Default Paths'
-below, because that will minimise customising the configuration file and
-the shell scripts.
+downloaded ZIP file to wherever you want to install it. 
+
+You will make things easiest for yourself if you use the locations described
+in 'Default Paths' below, because that will minimise customising the
+configuration file and the shell scripts.
 
 If you already have a previous IBC installation, it's wise to rename its
 folder (eg to `IBC.old`) so that you can easily refer back to any
@@ -341,9 +351,9 @@ script files to reflect this.
 | Unix     | IBKR TWS program files    | `/home/<username>/Jts`                |
 |          | IBC program files         | `/opt/ibc`                            |
 |          | config.ini                | `/home/<username>/ibc`                |
-| macOS    | IBKR TWS program files    | `/home/<username>/Applications`       |
+| macOS    | IBKR TWS program files    | `Users/<username>/Applications`       |
 |          | IBC program files         | `/opt/ibc`                            |
-|          | config.ini                | `/home/<username>/ibc`                |
+|          | config.ini                | `Users/<username>/ibc`                |
 
 Note that you may be able to find third-party Linux packages that allow
 IBC and/or TWS to be installed using a Linux package manager such as `apt`:
