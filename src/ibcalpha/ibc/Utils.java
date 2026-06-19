@@ -91,8 +91,8 @@ class Utils {
     }
 
     static void exitWithError(int errorCode) {
-        logToConsole("Exiting with exit code=" + errorCode);
-        System.exit(errorCode);
+        logToConsole("Exiting after error with exit code=" + errorCode);
+        Runtime.getRuntime().halt(errorCode);
     }
 
     static void exitWithError(int errorCode, String message) {
@@ -110,20 +110,20 @@ class Utils {
     }
 
     static void logError(String message) {
-        getErrStream().println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        getErrStream().println(formatMessage(message));
-        getErrStream().println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        getOutStream().println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        getOutStream().println(formatMessage(message));
+        getOutStream().println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
     static void logException(Throwable t) {
-        getErrStream().println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        getErrStream().println(formatMessage("An exception has occurred:"));
+        getOutStream().println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        getOutStream().println(formatMessage("An exception has occurred:"));
         if (Settings.settings().getBoolean("IncludeStackTraceForExceptions", false)) {
-            t.printStackTrace(getErrStream());
+            t.printStackTrace(getOutStream());
         } else {
-             getErrStream().println(t.getMessage() + "");
+             getOutStream().println(t.getMessage() + "");
         }
-        getErrStream().println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        getOutStream().println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
     /**
