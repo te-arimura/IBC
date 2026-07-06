@@ -38,7 +38,9 @@ if defined LOG_PATH (
 			if "!REDIRECTERROR!" == "1" goto :err
 		)
 
-		for /f %%a in ('powershell -NoProfile -Command "(Get-Date).DayOfWeek.ToString().ToUpper()"') do set DAYOFWEEK=%%a
+		:: get the day name in English
+		for /f %%a in ('powershell -NoProfile -Command "Add-Type -AssemblyName System.Globalization; $culture = New-Object System.Globalization.CultureInfo "en-EN"; $dayOfWeek = (Get-Date).DayOfWeek; $culture.DateTimeFormat.GetDayName($dayOfWeek).ToUpper()"') do set DAYOFWEEK=%%a
+
 		set LOG_FILE=%LOG_PATH%\IBC-%IBC_VRSN%_%APP%-%TWS_MAJOR_VRSN%_!DAYOFWEEK!.txt
 		if exist "!LOG_FILE!" (
 			for %%? in (!LOG_FILE!) do (
