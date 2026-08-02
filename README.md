@@ -1,3 +1,9 @@
+>**This project will be retired on 1 September 2026. By 'retired', I mean that there will be no further development of IBC after that date. Nor will IBC be actively supported on this repository.**
+
+>**See [Discussion 347](https://github.com/IbcAlpha/IBC/discussions/347) for the reasons for this. If you have any queries regarding this, please post them either there, or on the [IBC User Group](https://groups.io/g/ibcalpha).**
+
+
+
 **Download the
 [latest official release here](https://github.com/IbcAlpha/IBC/releases/latest)**
 
