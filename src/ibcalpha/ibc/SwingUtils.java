@@ -46,6 +46,7 @@ import javax.swing.JToggleButton;
 import javax.swing.JTree;
 import javax.swing.ListModel;
 import javax.swing.MenuElement;
+import javax.swing.text.JTextComponent;
 import javax.swing.tree.TreeModel;
 
 class SwingUtils {
@@ -263,11 +264,12 @@ class SwingUtils {
         String s = "";
         while (iter.hasNext()) {
             Component component = iter.next();
-            if (component instanceof JTextArea) {
-                String content = ((JTextArea)component).getText();
-                if (content != null) {
+            if (component instanceof JTextComponent) {
+                try {
+                    String content = ((JTextComponent)component).getText();
                     if (s.length() != 0) s += NEWLINE;
                     s += content;
+                } catch (NullPointerException e) {
                 }
             }
         }
