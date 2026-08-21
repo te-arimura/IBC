@@ -400,6 +400,10 @@ find_auto_restart
 
 #======================== Generate the extra JAVA VM options =====================
 
+# Thanks to Copilot for generating this script.
+
+echo Generating the extra JAVA options
+
 confPath="$install4j/i4jparams.conf"
 
 # Extract the line containing the javaOptions variable

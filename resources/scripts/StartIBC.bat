@@ -379,6 +379,11 @@ echo.
 ::======================== Generate the extra JAVA options =====================
 
 echo Generating the extra JAVA options
+
+:: Thanks to Copilot for generating this script and the associated PowerShell script
+:: (getExtraJavaOptions.ps1). It went through many failed iterations of batch scripting
+:: before coming up with this. No wonder I couldn't make it work!
+
 set PHASE=Generating the extra JAVA options
 
 set EXTRA_JAVA_OPTIONS=

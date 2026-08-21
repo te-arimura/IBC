@@ -1,3 +1,6 @@
+<#
+Thanks to Copilot for generating this script.
+#>
 param(
     [string]$Install4J
 )
