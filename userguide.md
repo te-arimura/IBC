@@ -919,9 +919,24 @@ PAUSE
 > preserves the user's current login credentials so that when IBC is next
 > started, the user's session will be resumed without the need to login.
 >
-> The primary intended use of the PAUSE command is for situations wheere the 
+> Note that PAUSE-ing an IBC process running TWS makes use of the TWS
+> `File | Restart...` menu command, to generate the file containing the login
+> credentials to be carried forward (TWS is prevented from creating the
+> new IBC process that restart normally uses). This occurs immediately, and the
+> process typically exits within about 5 seconds. 
+
+> For a Gateway process, the situation is very different, because Gateway
+> doesn't have a `File | Restart...` menu command. So IBC has to use a different
+> method to get the credentials file created, which happens at the end of the
+> current minute (or the end of the next minute if the current minute ends
+> imminently). As a result, and allowing for the overhead of processing the
+> PAUSE command and shutting down the process, it can take up to about 75
+> seconds for Gateway to exit after receiving the PAUSE command.
+>
+> An example use of the PAUSE command is for situations wheere the 
 > computer is powered by an Uninterruptible Power Supply (UPS). In the event of
-> impending power failure, arrangements can be made for a notification to be
+> impending power failure, typically where the remaining charge in the UPS has
+> fallen below some threshold, arrangements can be made for a notification to be
 > received by various means, and whatever receives the notofication can send a
 > PAUSE command to IBC. When power is recovered, IBC can be restarted
 > automatically and the previous TWS session will be resumed.

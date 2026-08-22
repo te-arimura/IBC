@@ -2,7 +2,7 @@
     <property environment="env"/>
     <fail unless="env.IBC_BIN" message="Environment variable 'IBC_BIN' not set (set it to the fully-qualified directory name containing the TWS jar files)."/>
 
-    <property name="ver" value="3.24.1"/>
+    <property name="ver" value="3.24.2"/>
     <property name="src" location="src"/>
     <property name="resources" location="resources"/>
     <property name="target" location="target"/>
@@ -46,6 +46,7 @@ public class IbcVersionInfo {
 
     <target name="dist" depends="jar" description="generate the distribution zip">
         <echo file="${resources}/version" append="false" message="${ver}"/>
+
         <copy todir="${target}/IBCWin" preservelastmodified="true">
             <fileset file="LICENSE.txt"/>
             <fileset dir="${resources}">
@@ -53,8 +54,9 @@ public class IbcVersionInfo {
                 <exclude name="**/*.sh"/>
                 <exclude name="**/*.plist"/>
             </fileset>
-	</copy>
+		</copy>
         <zip destfile="${dist}/IBCWin-${ver}.zip" basedir="${target}/IBCWin" includes="**"/>
+
         <copy todir="${target}/IBCLinux" preservelastmodified="true">
             <fileset file="LICENSE.txt"/>
             <fileset dir="${resources}">
@@ -65,9 +67,11 @@ public class IbcVersionInfo {
                 <exclude name="**/*.xml"/>
                 <exclude name="**/IBC (*"/>
                 <exclude name="**/*.plist"/>
+				<exclude name="**/*.ps1"/>
             </fileset>
-	</copy>
+		</copy>
         <zip destfile="${dist}/IBCLinux-${ver}.zip" basedir="${target}/IBCLinux" includes="**"/>
+
         <copy todir="${target}/IBCMacos" preservelastmodified="true">
             <fileset file="LICENSE.txt"/>
             <fileset dir="${resources}">
@@ -79,8 +83,10 @@ public class IbcVersionInfo {
                 <exclude name="*start.sh"/>
                 <exclude name="**/*.xml"/>
                 <exclude name="**/IBC (*"/>
+				<exclude name="**/*.ps1"/>
             </fileset>
-	</copy>
+		</copy>
         <zip destfile="${dist}/IBCMacos-${ver}.zip" basedir="${target}/IBCMacos" includes="**"/>
+		
     </target>
 </project>
