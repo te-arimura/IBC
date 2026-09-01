@@ -1,8 +1,30 @@
->**This project will be retired on 1 September 2026. By 'retired', I mean that there will be no further development of IBC after that date. Nor will IBC be actively supported on this repository.**
+## PROJECT RETIREMENT
 
->**See [Discussion 347](https://github.com/IbcAlpha/IBC/discussions/347) for the reasons for this. If you have any queries regarding this, please post them either there, or on the [IBC User Group](https://groups.io/g/ibcalpha).**
+>**This project has been retired, as of 1 September 2026. By 'retired', I mean that
+there will be no further development of IBC, other than completing work in progress
+at that date and fixing any significant newly reported bugs.**
+>
+>**Nor will IBC be actively supported on this repository.**
 
+>See [Discussion 347](https://github.com/IbcAlpha/IBC/discussions/347) for the
+>reasons for this. If you have any queries regarding this, or you need to report new
+>bugs, please post them on the [IBC User Group](https://groups.io/g/ibcalpha). Please
+>do not submit requests for further enhancements to the User Group.
 
+>This project repository has been archived. All the repository data is preserved intact,
+>but it is read-only: so no new issues, pull requests, discussions or comments can be
+>added.
+
+>However you can still download releases, and fork the project should you wish to
+>carry it forward yourself.
+
+>It is intended to produce a final release that clears all outstanding issues.
+>This may take some time, and may involve interim releases. 
+
+>Thanks to all who have engaged with IBC (and its predecessor IBController) over the past
+> 23 years
+
+<br><br>
 
 **Download the
 [latest official release here](https://github.com/IbcAlpha/IBC/releases/latest)**
